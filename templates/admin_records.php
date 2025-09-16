@@ -1,12 +1,12 @@
 <div class="admin-records">
-    <div class="records-tabs">
-        <a href="?action=admin&menu=records&type=uploads" class="records-tab <?= (!isset($_GET['type']) || $_GET['type'] === 'uploads') ? 'active' : '' ?>">
+    <div class="filter-tabs">
+        <a href="?action=admin&menu=records&type=uploads" class="filter-tab <?= (!isset($_GET['type']) || $_GET['type'] === 'uploads') ? 'active' : '' ?>">
             上传记录
         </a>
-        <a href="?action=admin&menu=records&type=downloads" class="records-tab <?= (isset($_GET['type']) && $_GET['type'] === 'downloads') ? 'active' : '' ?>">
+        <a href="?action=admin&menu=records&type=downloads" class="filter-tab <?= (isset($_GET['type']) && $_GET['type'] === 'downloads') ? 'active' : '' ?>">
             下载记录
         </a>
-                <a href="?action=admin&menu=records&type=security" class="records-tab <?= (isset($_GET['type']) && $_GET['type'] === 'security') ? 'active' : '' ?>">
+        <a href="?action=admin&menu=records&type=security" class="filter-tab <?= (isset($_GET['type']) && $_GET['type'] === 'security') ? 'active' : '' ?>">
             安全日志
         </a>
     </div>
@@ -33,26 +33,27 @@
 </div>
 
 <style>
-.records-tabs {
+.filter-tabs {
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
 }
 
-.records-tab {
-    padding: 10px 20px;
+.filter-tab {
+    padding: 8px 16px;
     text-decoration: none;
     color: #666;
-    border-radius: 8px;
+    border-radius: 6px;
     transition: all 0.3s ease;
+    font-size: 0.9rem;
 }
 
-.records-tab:hover {
+.filter-tab:hover {
     background: #f8f9fa;
 }
 
-.records-tab.active {
-    background: #4b6cb7;
+.filter-tab.active {
+    background: #28a745;
     color: white;
 }
 
@@ -169,32 +170,6 @@
     color: #333;
 }
 
-.btn {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 6px;
-    text-decoration: none;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.btn-sm {
-    padding: 6px 12px;
-    font-size: 0.8rem;
-}
-
-.btn-danger {
-    background: #dc3545;
-    color: white;
-}
-
-.btn-danger:hover {
-    background: #c82333;
-}
 
 @media (max-width: 768px) {
     .record-item {
