@@ -12,11 +12,15 @@
             notification.style.right = '20px';
             notification.style.zIndex = '9999';
             notification.style.maxWidth = '300px';
+            notification.style.animation = 'fadeIn 0.5s';
             
             document.body.appendChild(notification);
             
             setTimeout(() => {
-                notification.remove();
+                notification.style.animation = 'fadeOut 0.5s';
+                setTimeout(() => {
+                    notification.remove();
+                }, 500);
             }, 3000);
         }
         
@@ -40,6 +44,13 @@
             });
         }
     </script>
+    
+    <style>
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+    </style>
     <?= AssetManager::renderScripts() ?>
 </body>
 </html>

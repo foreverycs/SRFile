@@ -120,12 +120,12 @@
 
 .file-name {
     font-weight: 500;
-    color: #333;
+    color: white;
 }
 
 .file-meta {
     font-size: 0.8rem;
-    color: #666;
+    color: white;
 }
 
 .action-buttons {

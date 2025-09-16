@@ -374,13 +374,15 @@ function selectCommonTypes() {
 .config-section {
     margin-bottom: 30px;
     padding: 20px;
-    background: #f8f9fa;
-    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .config-section h3 {
     margin-bottom: 20px;
-    color: #333;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .checkbox-label {
@@ -392,6 +394,7 @@ function selectCommonTypes() {
     min-height: 38px;
     line-height: 38px;
     padding: 8px 0;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .checkbox-label input[type="checkbox"] {
@@ -426,18 +429,23 @@ function selectCommonTypes() {
     align-items: center;
     gap: 8px;
     padding: 10px;
-    background: white;
+    background: rgba(255, 255, 255, 0.05);
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .file-type-item:hover {
-    background: #e9ecef;
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .file-type-item input[type="checkbox"] {
     margin: 0;
+}
+
+.file-type-item span {
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .storage-info {
@@ -451,19 +459,20 @@ function selectCommonTypes() {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background: white;
+    background: rgba(255, 255, 255, 0.05);
     border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .storage-label {
     font-weight: 500;
-    color: #666;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .storage-value {
     font-family: monospace;
-    color: #333;
-    background: #f8f9fa;
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
     padding: 4px 8px;
     border-radius: 4px;
 }

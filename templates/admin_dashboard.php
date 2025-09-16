@@ -62,7 +62,7 @@ endswitch;
     align-items: center;
     margin-bottom: 30px;
     padding-bottom: 20px;
-    border-bottom: 1px solid #e9ecef;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .nav-tabs {
@@ -73,18 +73,19 @@ endswitch;
 .nav-tab {
     padding: 10px 20px;
     text-decoration: none;
-    color: #666;
+    color: rgba(255, 255, 255, 0.7);
     border-radius: 8px;
     transition: all 0.3s ease;
 }
 
 .nav-tab:hover {
-    background: #f8f9fa;
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .nav-tab.active {
-    background: #4b6cb7;
+    background: linear-gradient(90deg, #4b6cb7, #182848);
     color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .nav-actions {
@@ -101,19 +102,20 @@ endswitch;
 .filter-tab {
     padding: 8px 16px;
     text-decoration: none;
-    color: #666;
+    color: rgba(255, 255, 255, 0.7);
     border-radius: 6px;
     transition: all 0.3s ease;
     font-size: 0.9rem;
 }
 
 .filter-tab:hover {
-    background: #f8f9fa;
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .filter-tab.active {
-    background: #28a745;
+    background: linear-gradient(90deg, #28a745, #1e7e34);
     color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .admin-table {
@@ -126,17 +128,17 @@ endswitch;
 .admin-table td {
     padding: 12px;
     text-align: left;
-    border-bottom: 1px solid #e9ecef;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .admin-table th {
-    background: #f8f9fa;
+    background: rgba(255, 255, 255, 0.1);
     font-weight: 600;
-    color: #333;
+    color: white;
 }
 
 .admin-table tr:hover {
-    background: #f8f9fa;
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .status-badge {
@@ -147,18 +149,21 @@ endswitch;
 }
 
 .status-pending {
-    background: #fff3cd;
-    color: #856404;
+    background: rgba(255, 193, 7, 0.2);
+    color: #fff3cd;
+    border: 1px solid rgba(255, 193, 7, 0.3);
 }
 
 .status-approved {
-    background: #d4edda;
-    color: #155724;
+    background: rgba(40, 167, 69, 0.2);
+    color: #d4edda;
+    border: 1px solid rgba(40, 167, 69, 0.3);
 }
 
 .status-blocked {
-    background: #f8d7da;
-    color: #721c24;
+    background: rgba(220, 53, 69, 0.2);
+    color: #f8d7da;
+    border: 1px solid rgba(220, 53, 69, 0.3);
 }
 
 .pagination {
@@ -171,20 +176,21 @@ endswitch;
 .pagination a {
     padding: 8px 12px;
     text-decoration: none;
-    color: #666;
-    border: 1px solid #e9ecef;
+    color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 4px;
     transition: all 0.3s ease;
 }
 
 .pagination a:hover {
-    background: #f8f9fa;
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .pagination a.active {
-    background: #4b6cb7;
+    background: linear-gradient(90deg, #4b6cb7, #182848);
     color: white;
     border-color: #4b6cb7;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .stats-grid {
@@ -195,30 +201,41 @@ endswitch;
 }
 
 .stat-card {
-    background: white;
+    background: rgba(0, 0, 0, 0.3);
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     text-align: center;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
 }
 
 .stat-number {
     font-size: 2rem;
     font-weight: bold;
-    color: #4b6cb7;
+    color: #fdbb2d;
     margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .stat-label {
-    color: #666;
+    color: rgba(255, 255, 255, 0.7);
     font-size: 0.9rem;
 }
 
 .chart-container {
-    background: white;
+    background: rgba(0, 0, 0, 0.3);
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     margin-bottom: 20px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 </style>

@@ -161,14 +161,15 @@
 
 .stats-section h3 {
     margin-bottom: 20px;
-    color: #333;
+    color: white;
     display: flex;
     align-items: center;
     gap: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .stats-section h3 i {
-    color: #4b6cb7;
+    color: #fdbb2d;
 }
 
 .stats-row {
@@ -179,19 +180,20 @@
 
 .stat-item {
     flex: 1;
-    background: #f8f9fa;
-    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
     padding: 15px;
     display: flex;
     align-items: center;
     gap: 15px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     min-width: 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .stat-item:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .stat-icon {
@@ -204,6 +206,7 @@
     justify-content: center;
     color: white;
     font-size: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .stat-content {
@@ -213,12 +216,12 @@
 .stat-value {
     font-size: 24px;
     font-weight: bold;
-    color: #333;
+    color: white;
     margin-bottom: 5px;
 }
 
 .stat-label {
-    color: #666;
+    color: rgba(255, 255, 255, 0.7);
     font-size: 14px;
 }
 
@@ -237,12 +240,13 @@
 .file-type-label {
     min-width: 80px;
     font-weight: 500;
+    color: white;
 }
 
 .file-type-bar {
     flex: 1;
     height: 20px;
-    background: #e9ecef;
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     overflow: hidden;
 }
@@ -257,6 +261,7 @@
     min-width: 40px;
     text-align: right;
     font-weight: 500;
+    color: white;
 }
 
 .daily-upload-chart {
@@ -295,6 +300,7 @@
     z-index: 10;
     transform: translate(-50%, -100%);
     margin-top: -10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .tooltip-day {
@@ -303,20 +309,22 @@
 }
 
 .tooltip-value {
-    color: #4b6cb7;
+    color: #fdbb2d;
     font-weight: bold;
 }
 
 .config-section {
     margin-bottom: 30px;
     padding: 20px;
-    background: #f8f9fa;
-    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .config-section h3 {
     margin-bottom: 20px;
-    color: #333;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .storage-info {
@@ -330,19 +338,20 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background: white;
+    background: rgba(255, 255, 255, 0.05);
     border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .storage-label {
     font-weight: 500;
-    color: #666;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .storage-value {
     font-family: monospace;
-    color: #333;
-    background: #f8f9fa;
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
     padding: 4px 8px;
     border-radius: 4px;
 }

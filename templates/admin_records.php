@@ -42,19 +42,23 @@
 .filter-tab {
     padding: 8px 16px;
     text-decoration: none;
-    color: #666;
+    color: rgba(255, 255, 255, 0.7);
     border-radius: 6px;
     transition: all 0.3s ease;
     font-size: 0.9rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .filter-tab:hover {
-    background: #f8f9fa;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
 }
 
 .filter-tab.active {
-    background: #28a745;
+    background: linear-gradient(90deg, #4b6cb7, #182848);
     color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .record-item {
@@ -62,10 +66,16 @@
     justify-content: space-between;
     align-items: center;
     padding: 15px;
-    background: white;
-    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
     margin-bottom: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.record-item:hover {
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .record-info {
@@ -74,7 +84,7 @@
 
 .record-time {
     font-size: 0.9rem;
-    color: #666;
+    color: rgba(255, 255, 255, 0.7);
     margin-bottom: 5px;
 }
 
@@ -86,15 +96,16 @@
 
 .record-name {
     font-weight: 500;
-    color: #333;
+    color: white;
 }
 
 .record-code {
     font-family: monospace;
-    background: #f8f9fa;
+    background: rgba(255, 255, 255, 0.1);
     padding: 2px 6px;
     border-radius: 4px;
     font-size: 0.9rem;
+    color: #fdbb2d;
 }
 
 .record-status {
@@ -106,6 +117,11 @@
 
 .security-event {
     border-left: 4px solid #dc3545;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .security-event.warning {
@@ -125,35 +141,35 @@
 
 .event-type {
     font-weight: 500;
-    color: #333;
+    color: white;
 }
 
 .event-time {
     font-size: 0.9rem;
-    color: #666;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .event-info {
     font-size: 0.9rem;
-    color: #666;
+    color: rgba(255, 255, 255, 0.7);
     margin-bottom: 5px;
 }
 
 .event-meta {
     font-size: 0.8rem;
-    color: #999;
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .no-records {
     text-align: center;
     padding: 40px;
-    color: #666;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .no-records i {
     font-size: 2rem;
     margin-bottom: 10px;
-    color: #ccc;
+    color: rgba(255, 255, 255, 0.3);
 }
 
 .section-header {
@@ -162,12 +178,13 @@
     align-items: center;
     margin-bottom: 20px;
     padding-bottom: 15px;
-    border-bottom: 1px solid #e9ecef;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .section-header h3 {
     margin: 0;
-    color: #333;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 

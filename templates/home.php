@@ -1,3 +1,4 @@
+
 <?php if ($uploadSuccess): ?>
     <div class="notification success">
         文件上传成功！取件码: <strong><?= htmlspecialchars($pickupCode) ?></strong>
@@ -174,9 +175,11 @@
 <style>
 .tabs {
     display: flex;
-    background: #f8f9fa;
-    border-radius: 8px 8px 0 0;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px 10px 0 0;
     overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: none;
 }
 
 .tab {
@@ -186,19 +189,26 @@
     cursor: pointer;
     transition: all 0.3s ease;
     font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .tab:hover {
-    background: #e9ecef;
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .tab.active {
-    background: #4b6cb7;
+    background: linear-gradient(90deg, #4b6cb7, #182848);
     color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .tab-content {
     display: none;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 0 0 10px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: none;
+    padding: 20px;
 }
 
 .tab-content.active {
@@ -206,30 +216,32 @@
 }
 
 .upload-area {
-    border: 2px dashed #4b6cb7;
-    border-radius: 8px;
+    border: 2px dashed rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
     padding: 40px;
     text-align: center;
     cursor: pointer;
     transition: all 0.3s ease;
     margin: 20px 0;
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .upload-area:hover {
-    border-color: #3a5ca0;
-    background: rgba(75, 108, 183, 0.05);
+    border-color: #fdbb2d;
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .allowed-types {
-    background: #f8f9fa;
-    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
     padding: 15px;
     margin: 15px 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .allowed-types h4 {
     margin: 0 0 10px 0;
-    color: #333;
+    color: white;
     font-size: 14px;
     font-weight: 600;
 }
@@ -241,8 +253,8 @@
 }
 
 .type-tag {
-    background: #e9ecef;
-    color: #495057;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
     padding: 4px 8px;
     border-radius: 4px;
     font-size: 12px;
@@ -250,8 +262,9 @@
 }
 
 .type-tag.more {
-    background: #4b6cb7;
+    background: linear-gradient(90deg, #4b6cb7, #182848);
     color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .notification {
@@ -260,69 +273,69 @@
     border-radius: 6px;
     font-weight: 500;
     z-index: 1000;
-    animation: slideIn 0.3s ease;
+    animation: fadeIn 0.5s;
 }
 
 .notification.success {
-    background: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
+    background: rgba(40, 167, 69, 0.2);
+    color: #d4edda;
+    border: 1px solid rgba(40, 167, 69, 0.5);
 }
 
 .notification.error {
-    background: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
+    background: rgba(220, 53, 69, 0.2);
+    color: #f8d7da;
+    border: 1px solid rgba(220, 53, 69, 0.5);
 }
 
 .notification.info {
-    background: #d1ecf1;
-    color: #0c5460;
-    border: 1px solid #bee5eb;
+    background: rgba(23, 162, 184, 0.2);
+    color: #d1ecf1;
+    border: 1px solid rgba(23, 162, 184, 0.5);
 }
 
-@keyframes slideIn {
-    from {
-        transform: translateY(-20px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 .upload-area.dragover {
-    border-color: #3a5ca0;
-    background: rgba(75, 108, 183, 0.1);
+    border-color: #fdbb2d;
+    background: rgba(255, 255, 255, 0.15);
 }
 
 .upload-icon {
     font-size: 3rem;
-    color: #4b6cb7;
+    color: #fdbb2d;
     margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .upload-text h3 {
     margin-bottom: 10px;
-    color: #333;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .upload-text p {
-    color: #666;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .file-list-container {
     margin-top: 20px;
     max-height: 300px;
     overflow-y: auto;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .file-list-title {
     font-size: 1.1rem;
     font-weight: 600;
     margin-bottom: 10px;
-    color: #444;
+    color: white;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -333,9 +346,14 @@
     align-items: center;
     justify-content: space-between;
     padding: 10px 15px;
-    background: #f8f9ff;
+    background: rgba(255, 255, 255, 0.05);
     border-radius: 8px;
     margin-bottom: 8px;
+    transition: all 0.3s ease;
+}
+
+.file-item:hover {
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .file-info {
@@ -346,43 +364,48 @@
 
 .file-icon {
     font-size: 1.2rem;
-    color: #4b6cb7;
+    color: #fdbb2d;
 }
 
 .file-name {
     font-weight: 500;
-    color: #333;
+    color: white;
 }
 
 .file-size {
-    color: #666;
+    color: rgba(255, 255, 255, 0.7);
     font-size: 0.9rem;
 }
 
 .file-remove {
-    background: #dc3545;
+    background: linear-gradient(90deg, #dc3545, #a71e2a);
     color: white;
     border: none;
     border-radius: 4px;
     padding: 5px 10px;
     cursor: pointer;
     font-size: 0.8rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
 }
 
 .file-remove:hover {
-    background: #c82333;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .recent-downloads {
     margin-top: 30px;
     padding: 20px;
-    background: #f8f9fa;
-    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .recent-downloads h3 {
     margin-bottom: 15px;
-    color: #333;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .download-item {
@@ -390,7 +413,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 0;
-    border-bottom: 1px solid #e9ecef;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .download-item:last-child {
@@ -399,23 +422,23 @@
 
 .download-name {
     font-weight: 500;
-    color: #333;
+    color: white;
 }
 
 .download-time {
     font-size: 0.9rem;
-    color: #666;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .download-code {
     font-size: 0.9rem;
-    color: #4b6cb7;
+    color: #fdbb2d;
     font-weight: 500;
 }
 
 .progress-container {
     width: 100%;
-    background: #f0f0f0;
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     margin: 15px 0;
     display: none;
