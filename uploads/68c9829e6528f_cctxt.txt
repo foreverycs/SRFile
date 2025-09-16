@@ -1,0 +1,30 @@
+npm uninstall -g @anthropic-ai/claude-code
+npm install -g @anthropic-ai/claude-code
+taskkill /PID 2900 /F
+
+npm uninstall -g @musistudio/claude-code-router
+npm install -g @musistudio/claude-code-router
+npm install -g @anthropic-ai/claude-code@1.0.70
+{
+  "LOG": true,
+  "Providers": [
+    {
+      "name": "wolfai",
+      "api_base_url": "https://wolfai.top/v1/chat/completions",
+      "api_key": "sk- 你的 API 令牌",
+      "models": [
+        "gemini-2.5-pro",
+        "gemini-2.5-flash",
+        "claude-sonnet-4-20250514",
+        "DeepSeek-R1-0528"
+      ],
+      "transformer": {"use": ["wolfai"] }
+    }
+  ],
+  "Router": {
+    "default": "wolfai,gemini-2.5-pro",
+    "background": "wolfai,gemini-2.5-flash",
+    "think": "wolfai,DeepSeek-R1-0528",
+    "longContext": "wolfai,claude-sonnet-4-20250514"
+  }
+}

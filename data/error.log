@@ -1,7 +1,16 @@
-[2025-09-16 12:08:04] [Warning] Undefined variable $filter in D:\USBwebserver\root\templates\admin_preview.php on line 45
-[2025-09-16 12:08:04] [Warning] Undefined variable $filter in D:\USBwebserver\root\templates\admin_preview.php on line 59
-[2025-09-16 12:08:04] [Warning] Undefined variable $filter in D:\USBwebserver\root\templates\admin_preview.php on line 67
-[2025-09-16 12:08:10] [Warning] Undefined variable $filter in D:\USBwebserver\root\templates\admin_preview.php on line 45
-[2025-09-16 12:08:10] [Warning] Undefined variable $filter in D:\USBwebserver\root\templates\admin_preview.php on line 52
-[2025-09-16 12:08:10] [Warning] Undefined variable $filter in D:\USBwebserver\root\templates\admin_preview.php on line 55
-[2025-09-16 12:08:10] [Warning] Undefined variable $filter in D:\USBwebserver\root\templates\admin_preview.php on line 67
+[2025-09-16 15:32:16] [Warning] Undefined variable $points in D:\USBwebserver\root\templates\admin_stats.php on line 127
+[2025-09-16 15:32:16] [Warning] foreach() argument must be of type array|object, null given in D:\USBwebserver\root\templates\admin_stats.php on line 127
+[2025-09-16 15:32:16] [Warning] Undefined variable $points in D:\USBwebserver\root\templates\admin_stats.php on line 135
+[2025-09-16 15:32:16] [Warning] foreach() argument must be of type array|object, null given in D:\USBwebserver\root\templates\admin_stats.php on line 135
+[2025-09-16 15:32:19] [Warning] Undefined variable $points in D:\USBwebserver\root\templates\admin_stats.php on line 127
+[2025-09-16 15:32:19] [Warning] foreach() argument must be of type array|object, null given in D:\USBwebserver\root\templates\admin_stats.php on line 127
+[2025-09-16 15:32:19] [Warning] Undefined variable $points in D:\USBwebserver\root\templates\admin_stats.php on line 135
+[2025-09-16 15:32:19] [Warning] foreach() argument must be of type array|object, null given in D:\USBwebserver\root\templates\admin_stats.php on line 135
+[2025-09-16 15:32:35] [Warning] Undefined variable $points in D:\USBwebserver\root\templates\admin_stats.php on line 127
+[2025-09-16 15:32:35] [Warning] foreach() argument must be of type array|object, null given in D:\USBwebserver\root\templates\admin_stats.php on line 127
+[2025-09-16 15:32:35] [Warning] Undefined variable $points in D:\USBwebserver\root\templates\admin_stats.php on line 135
+[2025-09-16 15:32:35] [Warning] foreach() argument must be of type array|object, null given in D:\USBwebserver\root\templates\admin_stats.php on line 135
+[2025-09-16 15:32:37] [Warning] Undefined variable $points in D:\USBwebserver\root\templates\admin_stats.php on line 127
+[2025-09-16 15:32:37] [Warning] foreach() argument must be of type array|object, null given in D:\USBwebserver\root\templates\admin_stats.php on line 127
+[2025-09-16 15:32:37] [Warning] Undefined variable $points in D:\USBwebserver\root\templates\admin_stats.php on line 135
+[2025-09-16 15:32:37] [Warning] foreach() argument must be of type array|object, null given in D:\USBwebserver\root\templates\admin_stats.php on line 135
