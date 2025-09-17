@@ -6,7 +6,7 @@ define('CONFIG_FILE', DATA_DIR . 'config.json');
 define('MAX_FILE_SIZE', 100 * 1024 * 1024); // 100MB
 define('EXPIRE_DAYS', 1); // 默认1天过期
 define('ADMIN_USERNAME', 'admin');
-define('ADMIN_PASSWORD', 'admin123');
+define('ADMIN_PASSWORD', 'admin');
 define('CHUNK_SIZE', 1 * 1024 * 1024); // 分块大小1MB
 
 // 创建必要目录

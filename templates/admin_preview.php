@@ -219,17 +219,19 @@
     align-items: flex-start;
     margin-bottom: 30px;
     padding: 20px;
-    background: #f8f9fa;
+    background: rgba(0, 0, 0, 0.3);
     border-radius: 10px;
-    border: 1px solid #e9ecef;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
 }
 
 .file-info h2 {
     margin-bottom: 15px;
-    color: #333;
+    color: white;
     display: flex;
     align-items: center;
     gap: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .file-details {
@@ -246,12 +248,12 @@
 
 .detail-item .label {
     font-weight: 600;
-    color: #666;
+    color: rgba(255, 255, 255, 0.7);
     min-width: 80px;
 }
 
 .detail-item .value {
-    color: #333;
+    color: white;
 }
 
 .preview-actions {
@@ -267,18 +269,20 @@
 
 .preview-content h3 {
     margin-bottom: 20px;
-    color: #333;
+    color: white;
     display: flex;
     align-items: center;
     gap: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .preview-container {
-    background: white;
+    background: rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e9ecef;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
 }
 
 .image-preview {
@@ -299,13 +303,14 @@
 .pdf-controls {
     margin-top: 15px;
     padding: 15px;
-    background: #f8f9fa;
+    background: rgba(0, 0, 0, 0.3);
     border-radius: 8px;
-    border: 1px solid #e9ecef;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
     align-items: center;
+    backdrop-filter: blur(5px);
 }
 
 .btn-small {
@@ -345,10 +350,11 @@
 }
 
 .text-preview {
-    background: #f8f9fa;
+    background: rgba(0, 0, 0, 0.3);
     border-radius: 8px;
     padding: 20px;
-    border: 1px solid #e9ecef;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
 }
 
 .preview-text {
@@ -359,6 +365,7 @@
     font-family: 'Courier New', monospace;
     font-size: 14px;
     line-height: 1.5;
+    color: white;
 }
 
 .video-preview {
@@ -374,8 +381,10 @@
 .audio-preview {
     text-align: center;
     padding: 40px;
-    background: #f8f9fa;
+    background: rgba(0, 0, 0, 0.3);
     border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
 }
 
 .preview-audio {
@@ -392,39 +401,44 @@
     height: 600px;
     border: none;
     border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .file-preview {
     text-align: center;
     padding: 60px 20px;
-    background: #f8f9fa;
+    background: rgba(0, 0, 0, 0.3);
     border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
 }
 
 .file-preview .file-icon {
     font-size: 4rem;
-    color: #666;
+    color: rgba(255, 255, 255, 0.7);
     margin-bottom: 20px;
 }
 
 .file-preview p {
     margin-bottom: 20px;
-    color: #666;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .file-metadata {
-    background: #f8f9fa;
+    background: rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     padding: 20px;
-    border: 1px solid #e9ecef;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
 }
 
 .file-metadata h3 {
     margin-bottom: 20px;
-    color: #333;
+    color: white;
     display: flex;
     align-items: center;
     gap: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .metadata-grid {
@@ -441,12 +455,12 @@
 
 .meta-label {
     font-weight: 600;
-    color: #666;
+    color: rgba(255, 255, 255, 0.7);
     min-width: 100px;
 }
 
 .meta-value {
-    color: #333;
+    color: white;
     font-family: 'Courier New', monospace;
     font-size: 0.9rem;
 }
@@ -459,18 +473,21 @@
 }
 
 .status-pending {
-    background: #fff3cd;
-    color: #856404;
+    background: rgba(255, 243, 205, 0.3);
+    color: #fdbb2d;
+    border: 1px solid rgba(253, 187, 45, 0.3);
 }
 
 .status-approved {
-    background: #d4edda;
-    color: #155724;
+    background: rgba(212, 237, 218, 0.3);
+    color: #4CAF50;
+    border: 1px solid rgba(76, 175, 80, 0.3);
 }
 
 .status-blocked {
-    background: #f8d7da;
-    color: #721c24;
+    background: rgba(248, 215, 218, 0.3);
+    color: #ff5252;
+    border: 1px solid rgba(255, 82, 82, 0.3);
 }
 
 @media (max-width: 768px) {
