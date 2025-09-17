@@ -113,6 +113,8 @@
         </button>
     </div>
     
+   
+    
     <!-- 全部链接模态框 -->
     <div id="all-links-modal" class="modal">
         <div class="modal-content">
@@ -145,14 +147,16 @@
 }
 
 .file-info {
-    background: #f8f9fa;
+    background: rgba(0, 0, 0, 0.3);
     padding: 20px;
     border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .file-info h2 {
     margin-bottom: 15px;
-    color: #333;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .file-meta {
@@ -160,7 +164,7 @@
     flex-wrap: wrap;
     gap: 15px;
     font-size: 0.9rem;
-    color: #666;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .file-meta span {
@@ -170,10 +174,10 @@
 }
 
 .file-preview {
-    background: white;
+    background: rgba(0, 0, 0, 0.3);
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .image-container {
@@ -272,13 +276,14 @@
 }
 
 .text-preview {
-    background: #f8f9fa;
+    background: rgba(0, 0, 0, 0.2);
     padding: 20px;
     border-radius: 8px;
     max-height: 70vh;
     overflow-y: auto;
     white-space: pre-wrap;
     word-wrap: break-word;
+    color: white;
 }
 
 .no-preview {
@@ -294,15 +299,16 @@
 }
 
 .file-list-container {
-    background: white;
+    background: rgba(0, 0, 0, 0.3);
     border-radius: 8px;
     padding: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .file-list-container h3 {
     margin-bottom: 15px;
-    color: #333;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .file-list {
@@ -313,23 +319,25 @@
 
 .file-btn {
     padding: 10px 15px;
-    background: #f8f9fa;
-    border: 1px solid #e9ecef;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.3s ease;
     text-align: left;
     min-width: 200px;
+    color: white;
 }
 
 .file-btn:hover {
-    background: #e9ecef;
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .file-btn.active-file {
-    background: #4b6cb7;
+    background: linear-gradient(90deg, #4b6cb7, #182848);
     color: white;
     border-color: #4b6cb7;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .file-actions {
@@ -352,18 +360,19 @@
 
 .modal-content {
     position: relative;
-    background: white;
+    background: rgba(0, 0, 0, 0.8);
     margin: 5% auto;
     padding: 0;
     width: 90%;
     max-width: 600px;
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .modal-header {
     padding: 20px;
-    border-bottom: 1px solid #e9ecef;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -371,7 +380,8 @@
 
 .modal-header h3 {
     margin: 0;
-    color: #333;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .close-btn {
@@ -379,11 +389,11 @@
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
-    color: #666;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .close-btn:hover {
-    color: #333;
+    color: white;
 }
 
 .modal-body {
@@ -399,7 +409,8 @@
 .link-name {
     font-weight: 500;
     margin-bottom: 8px;
-    color: #333;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .link-url {
@@ -410,10 +421,12 @@
 .link-url input {
     flex: 1;
     padding: 8px;
-    border: 1px solid #e9ecef;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 4px;
     font-family: monospace;
     font-size: 0.9rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
 }
 
 .copy-btn {
@@ -428,6 +441,130 @@
 
 .copy-btn:hover {
     background: #3a5ca0;
+}
+
+/* 用户下载记录样式 */
+.user-download-history {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 20px;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.history-header h3 {
+    margin: 0;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.clear-history-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.3s ease;
+}
+
+.clear-history-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.history-content {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+/* 确保历史记录列表始终使用flex布局 */
+.download-history-list,
+.access-history-list {
+    display: flex !important;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* 历史记录项的统一样式 */
+.history-item {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.history-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.history-item-info {
+    flex: 1;
+}
+
+.history-item-name {
+    font-weight: 500;
+    color: white;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.history-item-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.history-item-meta span {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.history-item-code {
+    background: #4b6cb7;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* 没有记录时的消息样式 */
+.no-history-message {
+    text-align: center;
+    padding: 30px;
+    color: rgba(255, 255, 255, 0.7);
+    font-style: italic;
+    display: none;
 }
 
 @media (max-width: 768px) {
@@ -511,6 +648,137 @@ window.onclick = function(event) {
     const modal = document.getElementById('all-links-modal');
     if (event.target === modal) {
         modal.style.display = 'none';
+    }
+}
+
+// 用户下载记录功能
+document.addEventListener('DOMContentLoaded', function() {
+    // 添加当前下载的文件到本地存储
+    addCurrentFileToDownloadHistory();
+    
+    // 显示下载记录
+    displayDownloadHistory();
+});
+
+// 添加当前下载的文件到本地存储
+function addCurrentFileToDownloadHistory() {
+    const fileInfo = {
+        fileName: '<?= htmlspecialchars($fileInfo->name) ?>',
+        code: '<?= htmlspecialchars($fileInfo->pickup_code) ?>',
+        timestamp: new Date().toISOString()
+    };
+    
+    // 从localStorage获取现有记录
+    let downloadHistory = JSON.parse(localStorage.getItem('fileDownloadHistory') || '[]');
+    
+    // 检查是否已存在相同记录
+    const existingIndex = downloadHistory.findIndex(item => item.fileName === fileInfo.fileName && item.code === fileInfo.code);
+    
+    if (existingIndex !== -1) {
+        // 如果存在，更新时间戳
+        downloadHistory[existingIndex].timestamp = fileInfo.timestamp;
+    } else {
+        // 如果不存在，添加新记录
+        downloadHistory.unshift(fileInfo);
+    }
+    
+    // 限制记录数量，最多保存50条
+    if (downloadHistory.length > 50) {
+        downloadHistory.splice(50);
+    }
+    
+    // 保存到localStorage
+    localStorage.setItem('fileDownloadHistory', JSON.stringify(downloadHistory));
+}
+
+// 显示下载记录 - 修复版本
+function displayDownloadHistory() {
+    console.log('Loading download history...');
+    const downloadHistory = JSON.parse(localStorage.getItem('fileDownloadHistory') || '[]');
+    const historyList = document.getElementById('download-history-list');
+    const noHistoryMessage = document.getElementById('no-download-history-message');
+    
+    console.log('Download list display style:', window.getComputedStyle(historyList).display);
+    
+    // 清空现有列表
+    historyList.innerHTML = '';
+    
+    if (downloadHistory.length === 0) {
+        // 如果没有记录，显示提示信息
+        historyList.style.display = 'none';
+        noHistoryMessage.style.display = 'block';
+    } else {
+        // 如果有记录，显示列表
+        historyList.style.display = 'flex'; // 确保这里是flex
+        noHistoryMessage.style.display = 'none';
+        
+        // 添加每条记录到列表
+        downloadHistory.forEach(item => {
+            const historyItem = document.createElement('div');
+            historyItem.className = 'history-item';
+            historyItem.innerHTML = `
+                <div class="history-item-info">
+                    <div class="history-item-name">
+                        <i class="fas fa-download"></i>
+                        ${item.fileName}
+                    </div>
+                    <div class="history-item-meta">
+                        <span><i class="fas fa-key"></i> ${item.code}</span>
+                        <span><i class="fas fa-clock"></i> ${formatAccessTime(item.timestamp)}</span>
+                    </div>
+                </div>
+                <div class="history-item-code">${item.code}</div>
+            `;
+            
+            // 添加点击事件，点击记录可以填入取件码到下载表单
+            historyItem.addEventListener('click', function() {
+                // 返回首页
+                window.location.href = '?action=home';
+            });
+            
+            historyList.appendChild(historyItem);
+        });
+    }
+}
+
+// 清除下载记录
+function clearDownloadHistory() {
+    if (confirm('确定要清除所有下载记录吗？此操作不可撤销。')) {
+        localStorage.removeItem('fileDownloadHistory');
+        displayDownloadHistory();
+    }
+}
+
+// 格式化文件大小
+function formatSize(bytes) {
+    if (bytes === 0) return '0 Bytes';
+    
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+}
+
+// 格式化访问时间
+function formatAccessTime(isoString) {
+    const date = new Date(isoString);
+    const now = new Date();
+    const diffMs = now - date;
+    const diffMins = Math.floor(diffMs / 60000);
+    const diffHours = Math.floor(diffMs / 3600000);
+    const diffDays = Math.floor(diffMs / 86400000);
+    
+    if (diffMins < 1) {
+        return '刚刚';
+    } else if (diffMins < 60) {
+        return `${diffMins}分钟前`;
+    } else if (diffHours < 24) {
+        return `${diffHours}小时前`;
+    } else if (diffDays < 7) {
+        return `${diffDays}天前`;
+    } else {
+        return date.toLocaleDateString('zh-CN');
     }
 }
 </script>

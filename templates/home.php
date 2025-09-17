@@ -1,4 +1,3 @@
-
 <?php if ($uploadSuccess): ?>
     <div class="notification success">
         文件上传成功！取件码: <strong><?= htmlspecialchars($pickupCode) ?></strong>
@@ -131,6 +130,24 @@
                 <i class="fas fa-upload"></i> 开始上传
             </button>
         </form>
+        
+        <!-- 上传记录 -->
+        <div class="user-upload-history">
+            <div class="history-header">
+                <h3><i class="fas fa-cloud-upload-alt"></i> 上传记录</h3>
+                <button class="clear-history-btn" onclick="clearUploadHistory()">
+                    <i class="fas fa-trash"></i> 清除记录
+                </button>
+            </div>
+            <div class="history-content">
+                <div id="upload-history-list" class="access-history-list">
+                    <!-- 上传记录将通过JavaScript动态加载 -->
+                </div>
+                <div id="no-upload-history-message" class="no-history-message" style="display: none;">
+                    暂无上传记录
+                </div>
+            </div>
+        </div>
     </div>
     
     <div class="tab-content" id="receive-tab">
@@ -149,28 +166,23 @@
             </button>
         </form>
         
-        <?php if (isset($_SESSION['downloaded_files']) && !empty($_SESSION['downloaded_files'])): ?>
-            <div class="recent-downloads">
-                <h3>最近下载</h3>
-                <div class="download-list">
-                    <?php foreach (array_slice(array_reverse($_SESSION['downloaded_files']), 0, 5) as $download): ?>
-                        <div class="download-item">
-                            <div class="download-info">
-                                <div class="download-name"><?= htmlspecialchars($download['name']) ?></div>
-                                <div class="download-time">
-                                    <?= date('Y-m-d H:i', $download['download_time']) ?>
-                                </div>
-                            </div>
-                            <div class="download-code">
-                                取件码: <?= htmlspecialchars($download['pickup_code']) ?>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
+         <!-- 用户下载记录 -->
+        <div class="user-download-history">
+            <div class="history-header">
+                <h3><i class="fas fa-download"></i> 下载记录</h3>
+                <button class="clear-history-btn" onclick="clearDownloadHistory()">
+                    <i class="fas fa-trash"></i> 清除记录
+                </button>
+            </div>
+            <div class="history-content">
+                <div id="download-history-list" class="download-history-list">
+                    <!-- 下载记录将通过JavaScript动态加载 -->
+                </div>
+                <div id="no-download-history-message" class="no-history-message" style="display: none;">
+                    暂无下载记录
                 </div>
             </div>
-        <?php endif; ?>
-    </div>
-</div>
+        </div>
 
 <style>
 .tabs {
@@ -455,6 +467,140 @@
     font-size: 12px;
     line-height: 20px;
 }
+
+/* 上传记录样式 */
+.user-upload-history {
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 下载记录样式 */
+.user-download-history {
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.history-header h3 {
+    margin: 0;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.clear-history-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.3s ease;
+}
+
+.clear-history-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.history-content {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+/* 确保历史记录列表始终使用flex布局 */
+.download-history-list,
+.access-history-list {
+    display: flex !important;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* 历史记录项的统一样式 */
+.history-item {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.history-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.history-item-info {
+    flex: 1;
+}
+
+.history-item-name {
+    font-weight: 500;
+    color: white;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.history-item-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.history-item-meta span {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.history-item-code {
+    background: linear-gradient(90deg, #4b6cb7, #182848);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.8rem;
+    font-weight: 500;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 没有记录时的消息样式 */
+.no-history-message {
+    text-align: center;
+    padding: 30px;
+    color: rgba(255, 255, 255, 0.7);
+    font-style: italic;
+    display: none;
+}
 </style>
 
 <script>
@@ -667,6 +813,13 @@ uploadForm.addEventListener('submit', (e) => {
             const response = JSON.parse(xhr.responseText);
             if (response.success) {
                 showNotification('文件上传成功！取件码：' + response.pickup_code);
+                
+                // 添加上传记录
+                const fileName = selectedFiles.length > 1 ?
+                    `${selectedFiles.length}个文件` :
+                    selectedFiles[0].name;
+                addUploadRecord(fileName, response.pickup_code);
+                
                 // 重置表单
                 selectedFiles = [];
                 updateFileList();
@@ -723,6 +876,227 @@ function formatFileSize(bytes) {
         return (bytes / 1024).toFixed(2) + ' KB';
     } else {
         return bytes + ' bytes';
+    }
+}
+
+// 用户记录功能
+document.addEventListener('DOMContentLoaded', function() {
+    // 初始化上传记录
+    loadUploadHistory();
+    
+    // 初始化下载记录
+    loadDownloadHistory();
+
+    // 移除了在表单提交时添加下载记录的逻辑
+    // 现在下载记录将在进入预览界面时自动添加
+});
+
+// 加载上传记录 - 修复版本
+function loadUploadHistory() {
+    console.log('Loading upload history...');
+    const historyList = document.getElementById('upload-history-list');
+    const noHistoryMessage = document.getElementById('no-upload-history-message');
+    const history = JSON.parse(localStorage.getItem('fileUploadHistory') || '[]');
+
+    console.log('Upload list display style:', window.getComputedStyle(historyList).display);
+
+    // 清空现有列表
+    historyList.innerHTML = '';
+    
+    if (history.length === 0) {
+        // 如果没有记录，显示提示信息
+        historyList.style.display = 'none';
+        noHistoryMessage.style.display = 'block';
+    } else {
+        // 如果有记录，显示列表
+        historyList.style.display = 'flex'; // 确保这里是flex
+        noHistoryMessage.style.display = 'none';
+        
+        history.forEach(item => {
+            const historyItem = createUploadHistoryItem(item);
+            historyList.appendChild(historyItem);
+        });
+    }
+}
+
+// 加载下载记录 - 修复版本
+function loadDownloadHistory() {
+    console.log('Loading download history...');
+    const historyList = document.getElementById('download-history-list');
+    const noHistoryMessage = document.getElementById('no-download-history-message');
+    const history = JSON.parse(localStorage.getItem('fileDownloadHistory') || '[]');
+
+    console.log('Download list display style:', window.getComputedStyle(historyList).display);
+
+    // 清空现有列表
+    historyList.innerHTML = '';
+    
+    if (history.length === 0) {
+        // 如果没有记录，显示提示信息
+        historyList.style.display = 'none';
+        noHistoryMessage.style.display = 'block';
+    } else {
+        // 如果有记录，显示列表
+        historyList.style.display = 'flex'; // 确保这里是flex
+        noHistoryMessage.style.display = 'none';
+        
+        history.forEach(item => {
+            const historyItem = createDownloadHistoryItem(item);
+            historyList.appendChild(historyItem);
+        });
+    }
+}
+
+// 创建上传历史记录项
+function createUploadHistoryItem(item) {
+    const div = document.createElement('div');
+    div.className = 'history-item';
+    div.innerHTML = `
+        <div class="history-item-info">
+            <div class="history-item-name">
+                <i class="fas fa-upload"></i>
+                ${item.fileName}
+            </div>
+            <div class="history-item-meta">
+                <span><i class="fas fa-key"></i> ${item.code}</span>
+                <span><i class="fas fa-clock"></i> ${formatAccessTime(item.timestamp)}</span>
+            </div>
+        </div>
+        <div class="history-item-code">${item.code}</div>
+    `;
+    
+    // 添加点击事件，点击记录可以填入取件码到下载表单
+    div.addEventListener('click', function() {
+        // 切换到提取文件标签页
+        document.querySelector('.tab[data-tab="receive"]').click();
+        // 填入取件码
+        document.getElementById('pickup-code').value = item.code;
+        // 滚动到表单位置
+        document.getElementById('pickup-form').scrollIntoView({ behavior: 'smooth' });
+    });
+    
+    return div;
+}
+
+// 创建下载历史记录项
+function createDownloadHistoryItem(item) {
+    const div = document.createElement('div');
+    div.className = 'history-item';
+    div.innerHTML = `
+        <div class="history-item-info">
+            <div class="history-item-name">
+                <i class="fas fa-download"></i>
+                ${item.fileName}
+            </div>
+            <div class="history-item-meta">
+                <span><i class="fas fa-key"></i> ${item.code}</span>
+                <span><i class="fas fa-clock"></i> ${formatAccessTime(item.timestamp)}</span>
+            </div>
+        </div>
+        <div class="history-item-code">${item.code}</div>
+    `;
+    
+    // 添加点击事件，点击记录可以填入取件码
+    div.addEventListener('click', function() {
+        document.getElementById('pickup-code').value = item.code;
+        // 滚动到表单位置
+        document.getElementById('pickup-form').scrollIntoView({ behavior: 'smooth' });
+    });
+    
+    return div;
+}
+
+// 添加上传记录
+function addUploadRecord(fileName, code) {
+    const history = JSON.parse(localStorage.getItem('fileUploadHistory') || '[]');
+    
+    // 检查是否已存在相同记录
+    const existingIndex = history.findIndex(item => item.fileName === fileName && item.code === code);
+    
+    if (existingIndex !== -1) {
+        // 如果存在，更新时间戳
+        history[existingIndex].timestamp = new Date().toISOString();
+    } else {
+        // 如果不存在，添加新记录
+        history.unshift({
+            fileName,
+            code,
+            timestamp: new Date().toISOString()
+        });
+    }
+
+    // 限制记录数量，最多保存50条
+    if (history.length > 50) {
+        history.splice(50);
+    }
+
+    localStorage.setItem('fileUploadHistory', JSON.stringify(history));
+    loadUploadHistory();
+}
+
+// 添加下载记录
+function addDownloadRecord(fileName, code) {
+    const history = JSON.parse(localStorage.getItem('fileDownloadHistory') || '[]');
+    
+    // 检查是否已存在相同记录
+    const existingIndex = history.findIndex(item => item.fileName === fileName && item.code === code);
+    
+    if (existingIndex !== -1) {
+        // 如果存在，更新时间戳
+        history[existingIndex].timestamp = new Date().toISOString();
+    } else {
+        // 如果不存在，添加新记录
+        history.unshift({
+            fileName,
+            code,
+            timestamp: new Date().toISOString()
+        });
+    }
+
+    // 限制记录数量，最多保存50条
+    if (history.length > 50) {
+        history.splice(50);
+    }
+
+    localStorage.setItem('fileDownloadHistory', JSON.stringify(history));
+    loadDownloadHistory();
+}
+
+// 清除上传记录
+function clearUploadHistory() {
+    if (confirm('确定要清除所有上传记录吗？此操作不可撤销。')) {
+        localStorage.removeItem('fileUploadHistory');
+        loadUploadHistory();
+    }
+}
+
+// 清除下载记录
+function clearDownloadHistory() {
+    if (confirm('确定要清除所有下载记录吗？此操作不可撤销。')) {
+        localStorage.removeItem('fileDownloadHistory');
+        loadDownloadHistory();
+    }
+}
+
+// 格式化访问时间
+function formatAccessTime(isoString) {
+    const date = new Date(isoString);
+    const now = new Date();
+    const diffMs = now - date;
+    const diffMins = Math.floor(diffMs / 60000);
+    const diffHours = Math.floor(diffMs / 3600000);
+    const diffDays = Math.floor(diffMs / 86400000);
+    
+    if (diffMins < 1) {
+        return '刚刚';
+    } else if (diffMins < 60) {
+        return `${diffMins}分钟前`;
+    } else if (diffHours < 24) {
+        return `${diffHours}小时前`;
+    } else if (diffDays < 7) {
+        return `${diffDays}天前`;
+    } else {
+        return date.toLocaleDateString('zh-CN');
     }
 }
 </script>
