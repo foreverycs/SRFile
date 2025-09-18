@@ -202,9 +202,15 @@
     transition: all 0.3s ease;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.7);
+    /* 移动端优化 */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    touch-action: manipulation;
 }
 
-.tab:hover {
+.tab:hover, .tab:active {
     background: rgba(255, 255, 255, 0.1);
 }
 
@@ -214,9 +220,13 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
+/* 移动端标签页点击反馈 */
+.tab:active {
+    transform: scale(0.98);
+}
+
 .tab-content {
     display: none;
-    background: rgba(0, 0, 0, 0.3);
     border-radius: 0 0 10px 10px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-top: none;
@@ -236,11 +246,22 @@
     transition: all 0.3s ease;
     margin: 20px 0;
     background: rgba(255, 255, 255, 0.05);
+    /* 移动端优化 */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    touch-action: manipulation;
 }
 
-.upload-area:hover {
+.upload-area:hover, .upload-area:active {
     border-color: #fdbb2d;
     background: rgba(255, 255, 255, 0.1);
+}
+
+/* 移动端上传区域点击反馈 */
+.upload-area:active {
+    transform: scale(0.98);
 }
 
 .allowed-types {
@@ -357,15 +378,49 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 15px;
+    padding: 12px 15px;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 8px;
     margin-bottom: 8px;
     transition: all 0.3s ease;
+    /* 移动端优化 */
+    min-height: 60px; /* 确保足够的触摸区域 */
 }
 
-.file-item:hover {
+.file-item:hover, .file-item:active {
     background: rgba(255, 255, 255, 0.1);
+}
+
+.file-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    min-width: 0; /* 允许文本截断 */
+}
+
+.file-name {
+    font-weight: 500;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px; /* 移动端限制文件名宽度 */
+}
+
+.file-remove {
+    background: linear-gradient(90deg, #dc3545, #a71e2a);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    /* 移动端优化 */
+    min-width: 60px; /* 确保足够的触摸区域 */
+    min-height: 36px; /* 确保足够的触摸区域 */
 }
 
 .file-info {
@@ -600,6 +655,193 @@
     color: rgba(255, 255, 255, 0.7);
     font-style: italic;
     display: none;
+}
+/* 移动端适配样式 */
+@media (max-width: 600px) {
+    .tabs {
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .tab {
+        padding: 12px 8px;
+        font-size: 14px;
+    }
+    
+    .upload-area {
+        padding: 25px 15px;
+        margin: 15px 0;
+    }
+    
+    .upload-icon {
+        font-size: 2.5rem;
+    }
+    
+    .upload-text h3 {
+        font-size: 1.2rem;
+    }
+    
+    .upload-text p {
+        font-size: 14px;
+    }
+    
+    .allowed-types {
+        padding: 12px;
+        margin: 10px 0;
+    }
+    
+    .allowed-types h4 {
+        font-size: 13px;
+    }
+    
+    .types-list {
+        gap: 6px;
+    }
+    
+    .type-tag {
+        font-size: 11px;
+        padding: 3px 6px;
+    }
+    
+    .file-list-container {
+        padding: 12px;
+        margin-top: 15px;
+        max-height: 250px;
+    }
+    
+    .file-list-title {
+        font-size: 1rem;
+    }
+    
+    .file-item {
+        padding: 10px 12px;
+        min-height: 55px;
+    }
+    
+    .file-name {
+        max-width: 120px;
+        font-size: 14px;
+    }
+    
+    .file-size {
+        font-size: 12px;
+    }
+    
+    .file-remove {
+        padding: 6px 10px;
+        font-size: 12px;
+        min-width: 50px;
+        min-height: 32px;
+    }
+    
+    .form-group {
+        margin-bottom: 15px;
+    }
+    
+    .form-group label {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+    
+    .form-group select {
+        padding: 12px;
+        font-size: 16px; /* 防止iOS缩放 */
+    }
+    
+    .progress-container {
+        margin: 10px 0;
+        height: 24px;
+    }
+    
+    .progress-bar {
+        height: 24px;
+        line-height: 24px;
+        font-size: 12px;
+    }
+    
+    .user-upload-history,
+    .user-download-history {
+        padding: 15px;
+        margin-top: 20px;
+    }
+    
+    .history-header {
+        padding-bottom: 8px;
+        margin-bottom: 12px;
+    }
+    
+    .history-header h3 {
+        font-size: 1rem;
+    }
+    
+    .clear-history-btn {
+        padding: 5px 10px;
+        font-size: 13px;
+    }
+    
+    .history-content {
+        max-height: 250px;
+    }
+    
+    .history-item {
+        padding: 10px;
+    }
+    
+    .history-item-name {
+        font-size: 14px;
+    }
+    
+    .history-item-meta {
+        font-size: 12px;
+        gap: 8px;
+    }
+    
+    .history-item-code {
+        padding: 3px 6px;
+        font-size: 12px;
+    }
+}
+
+/* 平板设备适配 */
+@media (min-width: 601px) and (max-width: 768px) {
+    .upload-area {
+        padding: 35px 25px;
+    }
+    
+    .file-name {
+        max-width: 200px;
+    }
+    
+    .file-list-container {
+        max-height: 280px;
+    }
+}
+
+/* 大屏手机适配 */
+@media (min-width: 769px) and (max-width: 992px) {
+    .file-name {
+        max-width: 250px;
+    }
+}
+
+/* 横屏模式适配 */
+@media (max-width: 768px) and (orientation: landscape) {
+    .upload-area {
+        padding: 20px 15px;
+    }
+    
+    .upload-icon {
+        font-size: 2rem;
+    }
+    
+    .tabs {
+        border-radius: 8px;
+    }
+    
+    .tab {
+        padding: 10px 6px;
+        font-size: 13px;
+    }
 }
 </style>
 

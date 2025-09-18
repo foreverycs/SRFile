@@ -184,12 +184,24 @@
     position: relative;
     text-align: center;
     padding: 20px;
+    /* 移动端优化 */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    touch-action: manipulation;
 }
 
 .image-container img {
     max-width: 100%;
     max-height: 70vh;
     object-fit: contain;
+    /* 移动端优化 */
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
 }
 
 .image-controls {
@@ -204,6 +216,8 @@
     padding: 10px 20px;
     border-radius: 25px;
     color: white;
+    /* 移动端优化 */
+    z-index: 10;
 }
 
 .control-btn {
@@ -215,10 +229,26 @@
     padding: 5px 10px;
     border-radius: 4px;
     transition: background 0.3s ease;
+    /* 移动端优化 */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    touch-action: manipulation;
+    min-width: 40px;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.control-btn:hover:not(:disabled) {
+.control-btn:hover:not(:disabled),
+.control-btn:active:not(:disabled) {
     background: rgba(255, 255, 255, 0.2);
+}
+
+.control-btn:active {
+    transform: scale(0.95);
 }
 
 .control-btn:disabled {
@@ -228,6 +258,7 @@
 
 .file-counter {
     font-weight: 500;
+    min-width: 40px;
 }
 
 .fullscreen-btn {
@@ -241,20 +272,48 @@
     border-radius: 6px;
     cursor: pointer;
     transition: background 0.3s ease;
+    /* 移动端优化 */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    touch-action: manipulation;
+    z-index: 10;
+    min-width: 50px;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.fullscreen-btn:hover {
+.fullscreen-btn:hover,
+.fullscreen-btn:active {
     background: rgba(0, 0, 0, 0.9);
+}
+
+.fullscreen-btn:active {
+    transform: scale(0.95);
 }
 
 .video-container {
     position: relative;
     padding: 20px;
+    /* 移动端优化 */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .video-player {
     max-width: 100%;
     max-height: 70vh;
+    /* 移动端优化 */
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
 }
 
 .video-navigation {
@@ -269,10 +328,17 @@
     padding: 10px 20px;
     border-radius: 25px;
     color: white;
+    /* 移动端优化 */
+    z-index: 10;
 }
 
 .text-container {
     padding: 20px;
+    /* 移动端优化 */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: text;
+    user-select: text;
 }
 
 .text-preview {
@@ -284,6 +350,9 @@
     white-space: pre-wrap;
     word-wrap: break-word;
     color: white;
+    /* 移动端优化 */
+    font-size: 16px; /* 防止iOS缩放 */
+    line-height: 1.5;
 }
 
 .no-preview {
@@ -568,26 +637,291 @@
 }
 
 @media (max-width: 768px) {
+    .file-info {
+        padding: 15px;
+    }
+    
+    .file-info h2 {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+    
     .file-meta {
         flex-direction: column;
         gap: 8px;
+        font-size: 0.85rem;
+    }
+    
+    .file-preview {
+        border-radius: 6px;
+    }
+    
+    .image-container {
+        padding: 15px;
+    }
+    
+    .image-container img {
+        max-height: 60vh;
+    }
+    
+    .image-controls {
+        bottom: 15px;
+        padding: 8px 15px;
+        gap: 10px;
+    }
+    
+    .control-btn {
+        min-width: 36px;
+        min-height: 36px;
+        font-size: 1rem;
+        padding: 4px 8px;
+    }
+    
+    .file-counter {
+        font-size: 0.9rem;
+    }
+    
+    .fullscreen-btn {
+        top: 15px;
+        right: 15px;
+        padding: 8px 12px;
+        min-width: 45px;
+        min-height: 36px;
+        font-size: 0.9rem;
+    }
+    
+    .video-container {
+        padding: 15px;
+    }
+    
+    .video-player {
+        max-height: 60vh;
+    }
+    
+    .video-navigation {
+        bottom: 15px;
+        padding: 8px 15px;
+        gap: 10px;
+    }
+    
+    .text-container {
+        padding: 15px;
+    }
+    
+    .text-preview {
+        padding: 15px;
+        max-height: 60vh;
+        font-size: 15px;
+        line-height: 1.4;
+    }
+    
+    .no-preview {
+        padding: 40px 15px;
+    }
+    
+    .no-preview i {
+        font-size: 2.5rem;
+    }
+    
+    .file-list-container {
+        padding: 15px;
+    }
+    
+    .file-list-container h3 {
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+    }
+    
+    .file-btn {
+        padding: 12px;
+        min-width: 100%;
+        margin-bottom: 8px;
     }
     
     .file-actions {
         flex-direction: column;
+        gap: 8px;
     }
     
     .file-actions .btn {
         width: 100%;
+        padding: 12px;
+        font-size: 16px; /* 更大的触摸目标 */
     }
     
     .modal-content {
         margin: 10% auto;
         width: 95%;
+        border-radius: 6px;
+    }
+    
+    .modal-header {
+        padding: 15px;
+    }
+    
+    .modal-header h3 {
+        font-size: 1.1rem;
+    }
+    
+    .close-btn {
+        font-size: 1.3rem;
+    }
+    
+    .modal-body {
+        padding: 15px;
+        max-height: 60vh;
     }
     
     .link-url {
         flex-direction: column;
+        gap: 8px;
+    }
+    
+    .link-url input {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    .copy-btn {
+        padding: 10px;
+        width: 100%;
+    }
+    
+    .user-download-history {
+        padding: 15px;
+    }
+    
+    .history-header {
+        padding-bottom: 8px;
+        margin-bottom: 12px;
+    }
+    
+    .history-header h3 {
+        font-size: 1rem;
+    }
+    
+    .clear-history-btn {
+        padding: 5px 10px;
+        font-size: 0.85rem;
+    }
+    
+    .history-content {
+        max-height: 250px;
+    }
+    
+    .history-item {
+        padding: 10px;
+    }
+    
+    .history-item-name {
+        font-size: 0.9rem;
+    }
+    
+    .history-item-meta {
+        font-size: 0.75rem;
+        gap: 8px;
+    }
+    
+    .history-item-code {
+        padding: 3px 6px;
+        font-size: 0.75rem;
+    }
+}
+
+/* 平板设备适配 */
+@media (min-width: 601px) and (max-width: 768px) {
+    .file-info h2 {
+        font-size: 1.5rem;
+    }
+    
+    .image-container img {
+        max-height: 65vh;
+    }
+    
+    .video-player {
+        max-height: 65vh;
+    }
+    
+    .text-preview {
+        max-height: 65vh;
+        font-size: 16px;
+    }
+    
+    .file-btn {
+        min-width: 150px;
+    }
+}
+
+/* 大屏手机适配 */
+@media (min-width: 769px) and (max-width: 992px) {
+    .file-info h2 {
+        font-size: 1.7rem;
+    }
+    
+    .image-container img {
+        max-height: 75vh;
+    }
+    
+    .video-player {
+        max-height: 75vh;
+    }
+    
+    .text-preview {
+        max-height: 75vh;
+    }
+}
+
+/* 横屏模式适配 */
+@media (max-width: 768px) and (orientation: landscape) {
+    .file-info {
+        padding: 12px;
+    }
+    
+    .file-info h2 {
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+    }
+    
+    .file-meta {
+        font-size: 0.8rem;
+        gap: 6px;
+    }
+    
+    .image-container {
+        padding: 12px;
+    }
+    
+    .image-container img {
+        max-height: 50vh;
+    }
+    
+    .image-controls {
+        bottom: 10px;
+        padding: 6px 12px;
+    }
+    
+    .fullscreen-btn {
+        top: 10px;
+        right: 10px;
+        padding: 6px 10px;
+    }
+    
+    .video-container {
+        padding: 12px;
+    }
+    
+    .video-player {
+        max-height: 50vh;
+    }
+    
+    .text-container {
+        padding: 12px;
+    }
+    
+    .text-preview {
+        padding: 12px;
+        max-height: 50vh;
+        font-size: 14px;
     }
 }
 </style>

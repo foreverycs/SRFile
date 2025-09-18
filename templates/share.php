@@ -210,11 +210,21 @@
     padding: 20px;
     border: 1px solid #e9ecef;
     transition: all 0.3s ease;
+    /* 移动端优化 */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    touch-action: manipulation;
 }
 
-.file-card:hover {
+.file-card:hover, .file-card:active {
     transform: translateY(-2px);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.file-card:active {
+    transform: translateY(0);
 }
 
 .file-icon {
@@ -233,6 +243,7 @@
     color: #333;
     margin-bottom: 5px;
     word-break: break-word;
+    font-size: 16px; /* 防止iOS缩放 */
 }
 
 .file-meta {
@@ -246,11 +257,36 @@
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
+    /* 移动端优化 */
+    justify-content: center;
+}
+
+.file-actions .btn {
+    /* 移动端优化 */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    touch-action: manipulation;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .btn-sm {
     padding: 8px 16px;
     font-size: 0.9rem;
+    /* 移动端优化 */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    touch-action: manipulation;
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .share-actions {
@@ -261,6 +297,19 @@
     justify-content: center;
     gap: 15px;
     flex-wrap: wrap;
+}
+
+.share-actions .btn {
+    /* 移动端优化 */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    touch-action: manipulation;
+    min-height: 44px; /* 确保足够的触摸区域 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .modal-lg {
@@ -289,11 +338,26 @@
     border: 1px solid #ddd;
     border-radius: 8px;
     margin-bottom: 20px;
+    /* 移动端优化 */
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
 }
 
 .qr-container p {
     color: #666;
     margin-bottom: 20px;
+    font-size: 16px; /* 防止iOS缩放 */
+}
+
+.qr-container .btn {
+    /* 移动端优化 */
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* 预览内容样式 */
@@ -307,6 +371,12 @@
     height: auto;
     border-radius: 8px;
     cursor: pointer;
+    /* 移动端优化 */
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
 }
 
 .preview-info {
@@ -331,6 +401,8 @@
     font-family: 'Courier New', monospace;
     font-size: 0.9rem;
     line-height: 1.4;
+    /* 移动端优化 */
+    font-size: 16px; /* 防止iOS缩放 */
 }
 
 .preview-json pre {
@@ -341,6 +413,8 @@
     overflow-x: auto;
     font-size: 0.9rem;
     line-height: 1.4;
+    /* 移动端优化 */
+    font-size: 16px; /* 防止iOS缩放 */
 }
 
 /* 响应式设计 */
@@ -357,32 +431,111 @@
         font-size: 2rem;
     }
     
+    .share-title p {
+        font-size: 1rem;
+    }
+    
     .share-info {
         flex-direction: column;
         gap: 15px;
         padding: 20px;
     }
     
+    .info-item {
+        font-size: 0.9rem;
+    }
+    
+    .info-item i {
+        font-size: 1rem;
+    }
+    
     .file-list {
         padding: 20px;
     }
     
+    .file-list h3 {
+        font-size: 1.2rem;
+    }
+    
     .file-grid {
         grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .file-card {
+        padding: 15px;
+    }
+    
+    .file-icon {
+        font-size: 1.8rem;
+        margin-bottom: 12px;
+    }
+    
+    .file-name {
+        font-size: 15px;
+    }
+    
+    .file-meta {
+        font-size: 0.85rem;
+    }
+    
+    .file-actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .file-actions .btn {
+        width: 100%;
     }
     
     .share-actions {
         flex-direction: column;
         padding: 20px;
+        gap: 10px;
     }
     
     .share-actions .btn {
         width: 100%;
+        padding: 14px;
+        font-size: 16px;
     }
     
     .modal-lg {
         width: 95%;
         margin: 5% auto;
+    }
+    
+    .modal-header {
+        padding: 15px;
+    }
+    
+    .modal-header h3 {
+        font-size: 1.2rem;
+    }
+    
+    .modal-body {
+        padding: 15px;
+    }
+    
+    .qr-container {
+        padding: 15px;
+    }
+    
+    .qr-container img {
+        max-width: 250px;
+    }
+    
+    .qr-container p {
+        font-size: 15px;
+    }
+    
+    .preview-content {
+        max-height: 300px;
+        font-size: 15px;
+    }
+    
+    .preview-json pre {
+        font-size: 15px;
     }
 }
 
@@ -399,29 +552,179 @@
         font-size: 1.5rem;
     }
     
+    .share-title p {
+        font-size: 0.9rem;
+    }
+    
     .share-icon {
         font-size: 3rem;
+        margin-bottom: 15px;
+    }
+    
+    .share-info {
+        padding: 15px;
+        gap: 12px;
+    }
+    
+    .info-item {
+        font-size: 0.85rem;
     }
     
     .file-list {
         padding: 15px;
     }
     
+    .file-list h3 {
+        font-size: 1.1rem;
+    }
+    
     .file-card {
-        padding: 15px;
+        padding: 12px;
+    }
+    
+    .file-icon {
+        font-size: 1.6rem;
+        margin-bottom: 10px;
+    }
+    
+    .file-name {
+        font-size: 14px;
+    }
+    
+    .file-meta {
+        font-size: 0.8rem;
+        flex-direction: column;
+        gap: 4px;
     }
     
     .file-actions {
         flex-direction: column;
+        gap: 6px;
     }
     
     .file-actions .btn {
         width: 100%;
+        padding: 12px;
+        font-size: 14px;
+    }
+    
+    .share-actions {
+        padding: 15px;
+        gap: 8px;
+    }
+    
+    .share-actions .btn {
+        padding: 12px;
+        font-size: 15px;
     }
     
     .modal-content {
         width: 98%;
         margin: 10% auto;
+    }
+    
+    .modal-header {
+        padding: 12px;
+    }
+    
+    .modal-header h3 {
+        font-size: 1.1rem;
+    }
+    
+    .modal-body {
+        padding: 12px;
+    }
+    
+    .qr-container {
+        padding: 12px;
+    }
+    
+    .qr-container img {
+        max-width: 200px;
+    }
+    
+    .qr-container p {
+        font-size: 14px;
+    }
+    
+    .preview-content {
+        max-height: 250px;
+        font-size: 14px;
+    }
+    
+    .preview-json pre {
+        font-size: 14px;
+    }
+}
+
+/* 平板设备适配 */
+@media (min-width: 601px) and (max-width: 768px) {
+    .share-title h1 {
+        font-size: 2.2rem;
+    }
+    
+    .file-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+/* 大屏手机适配 */
+@media (min-width: 769px) and (max-width: 992px) {
+    .file-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+}
+
+/* 横屏模式适配 */
+@media (max-width: 768px) and (orientation: landscape) {
+    .share-header {
+        padding: 20px 15px;
+    }
+    
+    .share-title h1 {
+        font-size: 1.7rem;
+    }
+    
+    .share-icon {
+        font-size: 2.5rem;
+    }
+    
+    .share-info {
+        padding: 15px;
+        flex-direction: row;
+        justify-content: space-around;
+        gap: 10px;
+    }
+    
+    .file-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    
+    .file-card {
+        padding: 12px;
+    }
+    
+    .file-actions {
+        flex-direction: row;
+        gap: 6px;
+    }
+    
+    .file-actions .btn {
+        width: auto;
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+    
+    .share-actions {
+        flex-direction: row;
+        padding: 15px;
+        gap: 10px;
+    }
+    
+    .share-actions .btn {
+        width: auto;
+        padding: 10px 15px;
     }
 }
 </style>

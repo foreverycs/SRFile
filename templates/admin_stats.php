@@ -238,11 +238,21 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     min-width: 0;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    /* 移动端优化 */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    touch-action: manipulation;
 }
 
-.stat-item:hover {
+.stat-item:hover, .stat-item:active {
     transform: translateY(-2px);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.stat-item:active {
+    transform: translateY(0);
 }
 
 .stat-icon {
@@ -321,6 +331,9 @@
     justify-content: center;
     padding: 15px 0;
     overflow-x: auto;
+    /* 移动端优化 */
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
 }
 
 .line-chart-container {
@@ -337,6 +350,12 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(5px);
     transition: all 0.3s ease;
+    /* 移动端优化 */
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
 }
 
 .line-chart:hover {
@@ -424,11 +443,17 @@
     background: rgba(255, 255, 255, 0.05);
     border-radius: 6px;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    /* 移动端优化 */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: text;
+    user-select: text;
 }
 
 .storage-label {
     font-weight: 500;
     color: rgba(255, 255, 255, 0.7);
+    font-size: 16px; /* 防止iOS缩放 */
 }
 
 .storage-value {
@@ -437,6 +462,10 @@
     background: rgba(255, 255, 255, 0.1);
     padding: 4px 8px;
     border-radius: 4px;
+    font-size: 15px;
+    word-break: break-all;
+    max-width: 60%;
+    text-align: right;
 }
 
 @media (max-width: 768px) {
@@ -619,11 +648,126 @@
     
     .storage-item {
         padding: 12px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
     }
     
     .storage-value {
         font-size: 0.8rem;
         padding: 4px 8px;
+        max-width: 100%;
+        text-align: left;
+        word-break: break-all;
+    }
+    
+    .daily-upload-chart {
+        height: 160px;
+    }
+}
+
+/* 平板设备适配 */
+@media (min-width: 601px) and (max-width: 768px) {
+    .stats-row {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    
+    .stat-item {
+        flex-basis: 48%;
+        margin-bottom: 10px;
+    }
+    
+    .file-type-item {
+        padding: 15px;
+    }
+    
+    .file-type-label {
+        min-width: 100px;
+    }
+    
+    .daily-upload-chart {
+        height: 190px;
+    }
+}
+
+/* 大屏手机适配 */
+@media (min-width: 769px) and (max-width: 992px) {
+    .stats-row {
+        gap: 12px;
+    }
+    
+    .stat-item {
+        padding: 14px;
+    }
+    
+    .file-type-item {
+        padding: 14px;
+    }
+    
+    .daily-upload-chart {
+        height: 195px;
+    }
+}
+
+/* 横屏模式适配 */
+@media (max-width: 768px) and (orientation: landscape) {
+    .stats-section,
+    .chart-section,
+    .config-section {
+        padding: 10px;
+        margin-bottom: 12px;
+    }
+    
+    .stats-row {
+        flex-direction: row;
+        gap: 8px;
+    }
+    
+    .stat-item {
+        flex-direction: row;
+        text-align: left;
+        padding: 8px 12px;
+    }
+    
+    .stat-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+    }
+    
+    .stat-value {
+        font-size: 1.2rem;
+    }
+    
+    .file-type-item {
+        flex-direction: row;
+        align-items: center;
+        padding: 8px 12px;
+    }
+    
+    .file-type-label {
+        min-width: 80px;
+        font-size: 0.85rem;
+    }
+    
+    .file-type-bar {
+        height: 16px;
+    }
+    
+    .daily-upload-chart {
+        height: 150px;
+        padding: 10px 0;
+    }
+    
+    .storage-item {
+        flex-direction: row;
+        padding: 8px 12px;
+    }
+    
+    .storage-value {
+        max-width: 50%;
+        font-size: 0.85rem;
     }
 }
 </style>

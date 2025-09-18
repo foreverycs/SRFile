@@ -437,7 +437,7 @@ function showFileStatusPage($status, $fileInfo) {
 class FileSecurityValidator {
     // 允许的文件类型及其对应的真实MIME类型
     private static $allowedMimeTypes = [
-        'image/jpeg' => ['jpg', 'jpeg'],
+        'image/jpeg' => ['jpg', 'jpeg', 'jpe', 'jfif'],
         'image/png' => ['png'],
         'image/gif' => ['gif'],
         'video/mp4' => ['mp4'],
@@ -516,6 +516,10 @@ class FileSecurityValidator {
         
         // 首先根据扩展名确定MIME类型
         $extensionMimeMap = [
+            'jpg' => 'image/jpeg',
+            'jpeg' => 'image/jpeg',
+            'jpe' => 'image/jpeg',
+            'jfif' => 'image/jpeg',
             'zip' => 'application/zip',
             'rar' => 'application/x-rar-compressed',
             '7z' => 'application/x-7z-compressed',
@@ -523,7 +527,7 @@ class FileSecurityValidator {
             // ... 其他文件类型映射保持不变 ...
         ];
         
-        // 如果是已知的压缩文件类型，直接使用映射的MIME类型
+        // 如果是已知的文件类型，直接使用映射的MIME类型
         if (isset($extensionMimeMap[$extension])) {
             $realMimeType = $extensionMimeMap[$extension];
             error_log("使用扩展名映射的MIME类型: {$realMimeType}");
@@ -542,6 +546,10 @@ class FileSecurityValidator {
             // 如果检测到的MIME类型是通用二进制，尝试使用扩展名推断
             if (empty($realMimeType) || $realMimeType === 'application/octet-stream') {
                 $extensionToMime = [
+                    'jpg' => 'image/jpeg',
+                    'jpeg' => 'image/jpeg',
+                    'jpe' => 'image/jpeg',
+                    'jfif' => 'image/jpeg',
                     'c' => 'text/x-c',
                     'cpp' => 'text/x-c++',
                     'h' => 'text/x-c',
@@ -608,17 +616,41 @@ class FileSecurityValidator {
             // 尝试获取图片尺寸
             $imageInfo = getimagesize($tmpName);
             if ($imageInfo === false) {
+                error_log("图片验证失败：无法获取图片尺寸");
                 return false;
             }
             
             // 检查是否为有效图片
-            $allowedTypes = [IMAGETYPE_JPEG, IMAGETYPE_PNG, IMAGETYPE_GIF];
+            $allowedTypes = [IMAGETYPE_JPEG, IMAGETYPE_PNG, IMAGETYPE_GIF, IMAGETYPE_WEBP];
             if (!in_array($imageInfo[2], $allowedTypes)) {
+                error_log("图片验证失败：不支持的图片类型 " . $imageInfo[2]);
                 return false;
+            }
+            
+            // 对于JPEG图片，进行额外的验证
+            if ($imageInfo[2] === IMAGETYPE_JPEG) {
+                // 检查文件内容是否为有效的JPEG
+                $handle = fopen($tmpName, 'rb');
+                if (!$handle) {
+                    error_log("图片验证失败：无法打开文件");
+                    return false;
+                }
+                
+                // 读取文件开头几个字节
+                $header = fread($handle, 3);
+                fclose($handle);
+                
+                // JPEG文件开头应该是 0xFF 0xD8 0xFF
+                if ($header === false || strlen($header) < 3 ||
+                    ord($header[0]) !== 0xFF || ord($header[1]) !== 0xD8 || ord($header[2]) !== 0xFF) {
+                    error_log("图片验证失败：无效的JPEG文件头");
+                    return false;
+                }
             }
             
             return true;
         } catch (Exception $e) {
+            error_log("图片验证异常：" . $e->getMessage());
             return false;
         }
     }

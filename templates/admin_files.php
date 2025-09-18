@@ -136,6 +136,17 @@
 .action-buttons .btn {
     padding: 6px 8px;
     font-size: 0.8rem;
+    /* 移动端优化 */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    touch-action: manipulation;
+    min-width: 32px;
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .table-responsive {
@@ -147,13 +158,150 @@
         font-size: 0.9rem;
     }
     
+    .admin-table th,
+    .admin-table td {
+        padding: 8px 5px;
+    }
+    
+    .admin-table th:nth-child(2),
+    .admin-table td:nth-child(2),
+    .admin-table th:nth-child(3),
+    .admin-table td:nth-child(3) {
+        display: none; /* 隐藏类型和大小列 */
+    }
+    
     .action-buttons {
         flex-direction: column;
         gap: 2px;
     }
     
+    .action-buttons .btn {
+        width: 100%;
+        padding: 8px;
+        font-size: 0.8rem;
+        min-height: 36px;
+    }
+    
     .filter-tabs {
         flex-wrap: wrap;
+        gap: 5px;
+    }
+    
+    .filter-tab {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+    
+    .file-name {
+        max-width: 120px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .pagination {
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+    
+    .pagination a {
+        min-width: 32px;
+        min-height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .admin-table {
+        font-size: 0.85rem;
+    }
+    
+    .admin-table th,
+    .admin-table td {
+        padding: 6px 4px;
+    }
+    
+    .admin-table th:nth-child(4),
+    .admin-table td:nth-child(4) {
+        display: none; /* 隐藏上传时间列 */
+    }
+    
+    .file-name {
+        max-width: 80px;
+        font-size: 0.85rem;
+    }
+    
+    .file-meta {
+        font-size: 0.75rem;
+    }
+    
+    .status-badge {
+        font-size: 0.75rem;
+        padding: 2px 6px;
+    }
+    
+    .action-buttons .btn {
+        padding: 6px;
+        font-size: 0.75rem;
+        min-height: 32px;
+    }
+    
+    .filter-tab {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+}
+
+/* 平板设备适配 */
+@media (min-width: 601px) and (max-width: 768px) {
+    .admin-table th:nth-child(2),
+    .admin-table td:nth-child(2) {
+        display: table-cell; /* 显示类型列 */
+    }
+    
+    .file-name {
+        max-width: 150px;
+    }
+}
+
+/* 大屏手机适配 */
+@media (min-width: 769px) and (max-width: 992px) {
+    .admin-table {
+        font-size: 0.95rem;
+    }
+    
+    .file-name {
+        max-width: 200px;
+    }
+}
+
+/* 横屏模式适配 */
+@media (max-width: 768px) and (orientation: landscape) {
+    .admin-table {
+        font-size: 0.8rem;
+    }
+    
+    .admin-table th,
+    .admin-table td {
+        padding: 5px 3px;
+    }
+    
+    .admin-table th:nth-child(3),
+    .admin-table td:nth-child(3) {
+        display: table-cell; /* 显示大小列 */
+    }
+    
+    .action-buttons {
+        flex-direction: row;
+        gap: 3px;
+    }
+    
+    .action-buttons .btn {
+        width: auto;
+        padding: 4px 6px;
+        min-height: 28px;
     }
 }
 </style>

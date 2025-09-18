@@ -2,14 +2,18 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#1a2a6c">
     <title><?= htmlspecialchars($title) ?> - <?= htmlspecialchars($config['site_name']) ?></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+       
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
@@ -18,10 +22,20 @@
             color: white;
             min-height: 100vh;
             padding: 20px;
+            -webkit-tap-highlight-color: transparent; /* 移除移动端点击高亮 */
+            -webkit-touch-callout: none; /* 禁用长按菜单 */
+            -webkit-user-select: none; /* 禁用文本选择 */
+            user-select: none;
+        }
+        
+        /* 允许输入框文本选择 */
+        input, textarea, select {
+            -webkit-user-select: text;
+            user-select: text;
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             background: rgba(0, 0, 0, 0.7);
             border-radius: 15px;
@@ -30,7 +44,6 @@
         }
         
         header {
-            background: rgba(0, 0, 0, 0.3);
             color: white;
             padding: 20px;
             text-align: center;
@@ -64,7 +77,7 @@
         }
         
         .content {
-            padding: 20px;
+            padding: 0px;
         }
         
         .notification {
@@ -111,11 +124,22 @@
             transition: all 0.3s ease;
             margin: 5px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            /* 移动端优化 */
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+            touch-action: manipulation; /* 禁用双击缩放 */
         }
         
-        .btn:hover {
+        .btn:hover, .btn:active {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* 移动端按钮点击反馈 */
+        .btn:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
         
         .btn-danger {
@@ -181,13 +205,195 @@
             .container {
                 margin-top: 10px;
                 padding: 15px;
+                width: 95%;
             }
             
             .admin-entry {
                 position: static;
                 display: block;
                 margin-bottom: 10px;
+                text-align: center;
+                width: 100%;
+                box-sizing: border-box;
             }
+            
+            header {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .content {
+                padding: 15px;
+            }
+            
+            .btn {
+                padding: 12px 20px;
+                font-size: 16px; /* 更大的触摸目标 */
+                width: 100%;
+                margin: 5px 0;
+            }
+            
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                font-size: 16px; /* 防止iOS缩放 */
+                padding: 12px;
+            }
+            
+            .notification {
+                padding: 12px;
+                margin: 10px 0;
+                font-size: 14px;
+            }
+        }
+        
+        /* 平板设备适配 */
+        @media (min-width: 601px) and (max-width: 768px) {
+            .container {
+                padding: 20px;
+                width: 90%;
+            }
+            
+            header {
+                padding: 18px;
+            }
+            
+            h1 {
+                font-size: 1.7rem;
+            }
+            
+            .admin-entry {
+                padding: 6px 14px;
+                font-size: 13px;
+            }
+        }
+        
+        /* 大屏手机适配 */
+        @media (min-width: 769px) and (max-width: 992px) {
+            .container {
+                padding: 22px;
+            }
+        }
+        
+        /* 横屏模式适配 */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .container {
+                margin-top: 5px;
+                padding: 10px;
+            }
+            
+            header {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 1.3rem;
+            }
+            
+            .admin-entry {
+                padding: 5px 10px;
+                font-size: 12px;
+            }
+        }
+        
+        /* 触摸手势支持 */
+        .touch-gesture {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .touch-gesture.show {
+            opacity: 1;
+        }
+        
+        /* 滑动返回提示 */
+        .swipe-back-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #4b6cb7, #182848);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+            z-index: 1001;
+        }
+        
+        .swipe-back-indicator.active {
+            transform: scaleX(0.3);
+        }
+        
+        /* 双击缩放提示 */
+        .double-tap-indicator {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            z-index: 1002;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .double-tap-indicator.show {
+            opacity: 1;
+        }
+        
+        /* 长按菜单 */
+        .long-press-menu {
+            position: fixed;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 8px;
+            padding: 5px 0;
+            z-index: 1003;
+            display: none;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            min-width: 150px;
+        }
+        
+        .long-press-menu.show {
+            display: block;
+        }
+        
+        .long-press-menu-item {
+            padding: 10px 15px;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        
+        .long-press-menu-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .long-press-menu-item i {
+            margin-right: 8px;
+            width: 16px;
+            text-align: center;
         }
     </style>
     <?= AssetManager::renderStyles() ?>
@@ -196,8 +402,8 @@
     <div class="container">
         <header>
             <?php if ($showAdminLink): ?>
-                <?php if (isset($isAdminPage) && $isAdminPage && AuthManager::isAuthenticated()): ?>
-                    <!-- 后台界面显示进入首页 -->
+                <?php if (isset($isAdminPage) && $isAdminPage): ?>
+                    <!-- 管理员页面显示进入首页 -->
                     <a href="?action=home" class="admin-entry">
                         <i class="fas fa-home"></i> 进入首页
                     </a>
@@ -213,3 +419,26 @@
         </header>
         
         <div class="content">
+            
+            <!-- 触摸手势支持元素 -->
+            <div class="touch-gesture" id="touchGesture">
+                <i class="fas fa-hand-pointer"></i>
+            </div>
+            
+            <div class="swipe-back-indicator" id="swipeBackIndicator"></div>
+            
+            <div class="double-tap-indicator" id="doubleTapIndicator">
+                双击缩放
+            </div>
+            
+            <div class="long-press-menu" id="longPressMenu">
+                <div class="long-press-menu-item" id="refreshItem">
+                    <i class="fas fa-sync-alt"></i> 刷新
+                </div>
+                <div class="long-press-menu-item" id="backItem">
+                    <i class="fas fa-arrow-left"></i> 返回
+                </div>
+                <div class="long-press-menu-item" id="homeItem">
+                    <i class="fas fa-home"></i> 首页
+                </div>
+            </div>
